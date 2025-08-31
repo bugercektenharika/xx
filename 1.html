@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dünyanın En İyi Statik Sitesi</title>
+<style>
+  /* Reset */
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
+  body { background:#0f0f0f; color:#fff; line-height:1.6; }
+
+  header { display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:#111; position:sticky; top:0; z-index:1000; }
+  header h1 { font-size:1.8rem; color:#00ffe0; letter-spacing:2px; }
+  nav a { color:#fff; text-decoration:none; margin-left:25px; transition:0.3s; }
+  nav a:hover { color:#00ffe0; }
+
+  section { min-height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:50px; }
+  section:nth-child(even) { background:#1a1a1a; }
+
+  h2 { font-size:2.5rem; margin-bottom:20px; color:#00ffe0; }
+  p { max-width:700px; margin-bottom:30px; font-size:1.1rem; }
+
+  .btn { padding:15px 30px; background:#00ffe0; color:#111; text-decoration:none; font-weight:bold; border-radius:30px; transition:0.3s; }
+  .btn:hover { background:#00bfa5; }
+
+  /* Animasyonlar */
+  .fade-in { opacity:0; transform:translateY(20px); animation:fadeIn 1s forwards; }
+  @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+  footer { text-align:center; padding:30px; background:#111; font-size:0.9rem; color:#888; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>En İyi Site</h1>
+  <nav>
+    <a href="#home">Ana Sayfa</a>
+    <a href="#about">Hakkında</a>
+    <a href="#services">Servisler</a>
+    <a href="#contact">İletişim</a>
+  </nav>
+</header>
+
+<section id="home" class="fade-in">
+  <h2>Hoşgeldin!</h2>
+  <p>Bu site ultra hızlı, modern tasarım ve minimalist yaklaşımıyla hazırlanmıştır. Her şey kullanıcı deneyimi için optimize edilmiştir.</p>
+  <a href="#about" class="btn">Daha Fazla</a>
+</section>
+
+<section id="about" class="fade-in">
+  <h2>Hakkımızda</h2>
+  <p>Biz kodu ve tasarımı sanat olarak görüyoruz. Her piksel, her animasyon, her renk seçimi bir deneyim yaratmak için burada.</p>
+</section>
+
+<section id="services" class="fade-in">
+  <h2>Servislerimiz</h2>
+  <p>Web tasarım, performans optimizasyonu ve kullanıcı odaklı interaktif çözümler sunuyoruz.</p>
+  <a href="#contact" class="btn">Bize Ulaş</a>
+</section>
+
+<section id="contact" class="fade-in">
+  <h2>İletişim</h2>
+  <p>Bize ulaşmak için email veya sosyal medya üzerinden bağlanabilirsiniz. Her zaman yanıt veririz.</p>
+</section>
+
+<footer>
+  &copy; 2025 Dünyanın En İyi Statik Sitesi | Tasarım: Sen
+</footer>
+
+<script>
+  // Fade-in scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold:0.3 };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      entry.target.style.animationDelay = '0.2s';
+      entry.target.style.animationPlayState = 'running';
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+</body>
+</html>
